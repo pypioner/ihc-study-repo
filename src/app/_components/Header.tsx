@@ -19,7 +19,9 @@ export default function Header({ path }: { path?: string }) {
         </a>
       </nav>
       <div>
-        <a href="/login">Login</a>
+        <a href="/login" className="button">
+          Login
+        </a>
       </div>
     </header>
   );

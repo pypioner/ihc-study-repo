@@ -3,9 +3,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: var(--fundo);
+  background-color: var(--fundo-branco);
   color: var(--texto);
-  border-bottom: 1px solid var(--cinza);
   position: relative;
 
   .logo {
@@ -38,18 +37,22 @@
         width: 0;
         height: 4px;
         background-color: var(--destaque);
-        transition: width 0.3s ease;
+        transition: width 0.3s ease, transform 0.3s ease;
         position: absolute;
         bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
       }
 
       &:hover::before {
         width: calc(100% - 2rem);
+        transform: translateX(-50%);
       }
 
       &[data-active="true"] {
         &::before {
           width: calc(100% - 2rem);
+          transform: translateX(-50%);
         }
       }
     }
