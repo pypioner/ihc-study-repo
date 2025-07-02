@@ -37,6 +37,15 @@ export default function Perguntas() {
                 <option value="redes">Redes</option>
               </select>
             </div>
+            <div className="select">
+              <label htmlFor="ordenacao">Ordenar por</label>
+              <select name="ordenacao" id="ordenacao">
+                <option value="mais-novas">Mais novas</option>
+                <option value="mais-antigas">Mais antigas</option>
+                <option value="mais-votadas">Maior nota</option>
+                <option value="menos-votadas">Menor nota</option>
+              </select>
+            </div>
             <div className="checkboxes">
               <h4>Incluir:</h4>
               <div>
@@ -74,6 +83,7 @@ export default function Perguntas() {
                 </label>
               </div>
             </div>
+            <button type="submit">Aplicar filtros</button>
           </form>
         </aside>
       </main>
