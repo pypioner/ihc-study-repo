@@ -1,14 +1,22 @@
 import style from "./header.module.css";
 
-export default function Header() {
+export default function Header({ path }: { path?: string }) {
   return (
     <header className={style.header}>
-      <a href="/" className={style.logo}>
-        UCS Repo
-      </a>
+      <h1 className={style.logo}>UCS Repo</h1>
       <nav>
-        <a href="/materiais">Materiais</a>
-        <a href="/perguntas">Perguntas</a>
+        <a
+          href="/materiais"
+          data-active={path === "/materiais" ? "true" : "false"}
+        >
+          Materiais
+        </a>
+        <a
+          href="/perguntas"
+          data-active={path === "/perguntas" ? "true" : "false"}
+        >
+          Perguntas
+        </a>
       </nav>
       <div>
         <a href="/login">Login</a>
