@@ -1,20 +1,52 @@
 import Header from "../_components/Header";
+import Pergunta from "../_components/Pergunta";
 import style from "./perguntas.module.css";
 
 export default function Perguntas() {
   return (
     <>
       <Header path="/perguntas" />
-      <main>
-        <div>
+      <div className="page_container">
+        <main>
           <h2>Perguntas e Respostas</h2>
-        </div>
+          <ul className={style.lista}>
+            {Array(15)
+              .fill(null)
+              .map((_, i) => (
+                <Pergunta
+                  key={i}
+                  pergunta={{
+                    slug: "como-fazer-um-loop-em-javascript",
+                    titulo: "Como fazer um loop em JavaScript?",
+                    descricao:
+                      "Estou tentando entender como funcionam os loops em JavaScript, alguém pode me ajudar? Tudo que encontro na internet é muito técnico e não consigo entender, gostaria de um exemplo simples que eu possa testar e ver o resultado.",
+                    votos: 10,
+                    resolvida: true,
+                    curso: {
+                      slug: "ciencia-da-computacao",
+                      nome: "Ciência da Computação",
+                    },
+                    materia: { slug: "programacao", nome: "Programação" },
+                    autor: {
+                      nome: "João Silva",
+                      karma: "17mil",
+                      slug: "joao-silva",
+                    },
+                    data: "há 2 dias",
+                    respostas: 3,
+                  }}
+                />
+              ))}
+          </ul>
+        </main>
         <aside>
           <h3>Filtros</h3>
           <form className="filtros">
             <div className="busca">
               <input type="search" name="busca" placeholder="Buscar..." />
-              <button type="submit">Buscar</button>
+              <button type="submit" className="button">
+                Buscar
+              </button>
             </div>
             <div className="select">
               <label htmlFor="curso">Curso</label>
@@ -40,14 +72,14 @@ export default function Perguntas() {
             <div className="select">
               <label htmlFor="ordenacao">Ordenar por</label>
               <select name="ordenacao" id="ordenacao">
-                <option value="mais-novas">Mais novas</option>
-                <option value="mais-antigas">Mais antigas</option>
                 <option value="mais-votadas">Maior nota</option>
                 <option value="menos-votadas">Menor nota</option>
+                <option value="mais-novas">Mais novas</option>
+                <option value="mais-antigas">Mais antigas</option>
               </select>
             </div>
             <div className="checkboxes">
-              <h4>Incluir:</h4>
+              <h4>Incluir</h4>
               <div>
                 <label>
                   <input
@@ -83,10 +115,9 @@ export default function Perguntas() {
                 </label>
               </div>
             </div>
-            <button type="submit">Aplicar filtros</button>
           </form>
         </aside>
-      </main>
+      </div>
     </>
   );
 }

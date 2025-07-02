@@ -1,0 +1,36 @@
+.votos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 3rem;
+  gap: 0.5rem;
+
+  button {
+    background: none;
+    border: 1px solid var(--cinza);
+    border-radius: 50%;
+    cursor: pointer;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      display: block;
+    }
+  }
+
+  .contador {
+    font-weight: bold;
+  }
+
+  .upvote[aria-pressed="true"] {
+    background-color: var(--destaque);
+    border-color: var(--destaque);
+    color: #ffffff;
+  }
+
+  .downvote[aria-pressed="true"] {
+    background-color: var(--erro);
+    border-color: var(--erro);
+    color: #ffffff;
+  }
+}

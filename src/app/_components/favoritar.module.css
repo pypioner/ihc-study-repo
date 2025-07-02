@@ -1,0 +1,10 @@
+.favoritar {
+  display: block;
+  background: none;
+  padding: 0;
+  color: var(--cinza);
+
+  &[aria-pressed="true"] {
+    color: var(--amarelo);
+  }
+}
