@@ -17,7 +17,7 @@ export default async function Perguntas({
         <main>
           <h2>Perguntas e Respostas</h2>
           <Paginacao
-            key={params.page as string}
+            key={`paginacao_t_${params.page}`}
             page={typeof params.page === "string" ? parseInt(params.page) : 1}
             totalPages={10}
           />
@@ -128,11 +128,11 @@ export default async function Perguntas({
                 return b.votos - a.votos;
               })
               .map((pergunta, i) => (
-                <Pergunta key={i} pergunta={pergunta} />
+                <Pergunta key={`pergunta_${i}`} pergunta={pergunta} />
               ))}
           </ul>
           <Paginacao
-            key={params.page as string}
+            key={`paginacao_b_${params.page}`}
             page={typeof params.page === "string" ? parseInt(params.page) : 1}
             totalPages={10}
           />
