@@ -131,6 +131,11 @@ export default async function Perguntas({
                 <Pergunta key={i} pergunta={pergunta} />
               ))}
           </ul>
+          <Paginacao
+            key={params.page as string}
+            page={typeof params.page === "string" ? parseInt(params.page) : 1}
+            totalPages={10}
+          />
         </main>
         <aside>
           <h3>Filtros</h3>
