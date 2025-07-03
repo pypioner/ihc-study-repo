@@ -1,0 +1,67 @@
+.card {
+  border: 1px solid var(--cinza);
+  padding: 1rem;
+  display: flex;
+  gap: 1.5rem;
+
+  .avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 6.25rem;
+    height: 6.25rem;
+    background-color: var(--destaque);
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+      margin: 0;
+
+      .karma {
+        display: inline-block;
+        align-items: center;
+        font-size: 0.875rem;
+        border: 1px solid var(--destaque);
+        color: #ffffff;
+        margin-left: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        font-weight: normal;
+        transform: translateY(-3px);
+      }
+    }
+
+    p {
+      margin: 0;
+      color: var(--cinza);
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  & > div {
+    background-color: var(--fundo-branco);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    & > h3 {
+      margin-bottom: 1rem;
+    }
+
+    .perguntas {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+}

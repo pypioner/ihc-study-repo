@@ -83,7 +83,7 @@ button {
 }
 
 .page_container {
-  min-height: calc(100svh - 4rem);
+  min-height: calc(100svh - 4.5rem);
   padding: 1rem 1rem;
 
   display: flex;

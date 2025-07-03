@@ -8,16 +8,18 @@ import { usePathname, useSearchParams } from "next/navigation";
 export default function Paginacao({
   page,
   totalPages,
+  paramName = "page",
 }: {
   page: number;
   totalPages: number;
+  paramName?: string;
 }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const generatePageLink = (page: number) => {
     const searchParamsCopy = new URLSearchParams(searchParams);
-    searchParamsCopy.set("page", page.toString());
+    searchParamsCopy.set(paramName, page.toString());
     return pathname + "?" + searchParamsCopy.toString();
   };
 
@@ -45,7 +47,7 @@ export default function Paginacao({
         <span>Página </span>
         <input
           type="number"
-          name="page"
+          name={paramName}
           id="page"
           value={typedInPage}
           onChange={(e) => setTypedInPage(e.target.valueAsNumber)}

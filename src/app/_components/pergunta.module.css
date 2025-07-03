@@ -21,15 +21,22 @@
           }
 
           .resolvida {
-            display: inline-flex;
-            align-items: center;
-            font-size: 0.875rem;
-            background-color: var(--verde);
-            color: #ffffff;
-            margin-left: 0.5rem;
-            padding: 0rem 0.5rem 0rem 0.25rem;
-            font-weight: bold;
-            transform: translateY(5px);
+            position: relative;
+            width: 102px;
+            display: inline-block;
+
+            div {
+              position: absolute;
+              bottom: -5px;
+              display: inline-flex;
+              align-items: center;
+              font-size: 0.875rem;
+              background-color: var(--verde);
+              color: #ffffff;
+              margin-left: 0.5rem;
+              padding: 0rem 0.5rem 0rem 0.25rem;
+              font-weight: bold;
+            }
           }
         }
 
@@ -56,6 +63,7 @@
       .tags {
         display: flex;
         gap: 0.5rem;
+        flex-wrap: wrap;
 
         a {
           padding: 0.25rem 0.5rem;
@@ -89,6 +97,53 @@
 
           .karma {
             font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  &.compact {
+    .votos {
+      min-width: 1.5rem;
+    }
+
+    .conteudo {
+      .tituloContainer .titulo h3 {
+        line-height: 1;
+
+        .tituloTexto {
+          font-size: 1rem;
+        }
+
+        .resolvida {
+          width: 2.5rem;
+
+          div {
+            padding: 0;
+            color: var(--verde);
+            background-color: transparent;
+
+            span {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .informacoes {
+        margin-top: 0.5rem;
+
+        .tags {
+          a {
+            padding: 0;
+            border: none;
+
+            &:hover {
+              text-decoration: underline;
+              background-color: transparent;
+              color: var(--destaque);
+            }
           }
         }
       }
