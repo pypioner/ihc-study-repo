@@ -1,4 +1,5 @@
 import style from "./header.module.css";
+import Login from "./Login";
 
 export default function Header({ path }: { path?: string }) {
   return (
@@ -19,9 +20,7 @@ export default function Header({ path }: { path?: string }) {
         </a>
       </nav>
       <div>
-        <a href="/login" className="button">
-          Login
-        </a>
+        <Login />
       </div>
     </header>
   );

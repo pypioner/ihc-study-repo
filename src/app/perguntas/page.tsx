@@ -62,9 +62,9 @@ export default async function Perguntas({
                     slug: "joao-silva",
                   },
                   {
-                    nome: "Eu",
+                    nome: "Meu Nome",
                     karma: "5mil",
-                    slug: "eu",
+                    slug: "meu-nome",
                   },
                 ][Math.floor(Math.random() * 2)],
                 data: new Date(
@@ -89,7 +89,7 @@ export default async function Perguntas({
                   if (params.favoritas && !pergunta.favoritada) {
                     return false;
                   }
-                  if (params.minhas && pergunta.autor.slug !== "eu") {
+                  if (params.minhas && pergunta.autor.slug !== "meu-nome") {
                     return false;
                   }
                   if (params.curso && params.curso !== pergunta.curso.slug) {

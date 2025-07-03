@@ -1,0 +1,52 @@
+.login {
+  font-size: 1rem;
+}
+
+.loggedIn {
+  position: relative;
+
+  .avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--destaque);
+    color: #ffffff;
+  }
+
+  .popup {
+    position: absolute;
+    top: 2.5rem;
+    right: 0;
+    width: 8rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--destaque);
+    font-size: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+    transform-origin: top right;
+
+    &[aria-hidden="true"] {
+      transform: scale(0);
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    button,
+    a {
+      background-color: transparent;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 0.875rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

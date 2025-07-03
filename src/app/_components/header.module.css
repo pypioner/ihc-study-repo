@@ -2,11 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   background-color: var(--fundo-branco);
   color: var(--texto);
   position: relative;
   box-shadow: 0 0px 12px rgba(0, 0, 0, 0.25);
+  height: 4.5rem;
 
   .logo {
     display: flex;
@@ -20,7 +21,7 @@
     display: flex;
     gap: 1.5rem;
     position: absolute;
-    top: 1rem;
+    top: 1.25rem;
     left: 50%;
     transform: translateX(-50%);
 
