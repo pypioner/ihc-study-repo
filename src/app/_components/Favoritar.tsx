@@ -3,8 +3,12 @@
 import { useState } from "react";
 import style from "./favoritar.module.css";
 
-export default function Favoritar() {
-  const [favoritado, setFavoritado] = useState(false);
+export default function Favoritar({
+  defaultValue = false,
+}: {
+  defaultValue?: boolean;
+}) {
+  const [favoritado, setFavoritado] = useState(defaultValue);
 
   return (
     <button
