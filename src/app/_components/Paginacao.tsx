@@ -23,7 +23,7 @@ export default function Paginacao({
     return pathname + "?" + searchParamsCopy.toString();
   };
 
-  const [typedInPage, setTypedInPage] = useState(page);
+  const [typedInPage, setTypedInPage] = useState(page.toString());
 
   return (
     <div className={style.paginacao}>
@@ -50,17 +50,32 @@ export default function Paginacao({
           name={paramName}
           id="page"
           value={typedInPage}
-          onChange={(e) => setTypedInPage(e.target.valueAsNumber)}
+          onChange={(e) => setTypedInPage(e.target.value)}
           min={1}
           max={totalPages}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              const newPage = e.currentTarget.valueAsNumber;
+              const newPageLink = generatePageLink(newPage);
+              if (newPage >= 1 && newPage <= totalPages) {
+                window.location.href = newPageLink;
+              } else {
+                e.preventDefault();
+                alert(`Por favor, insira um número entre 1 e ${totalPages}.`);
+              }
+            }
+          }}
         />
         <span> de {totalPages}</span>
         <Link
-          href={generatePageLink(typedInPage)}
+          href={generatePageLink(parseInt(typedInPage))}
           className={`button secondary ${style.button}`}
           aria-label="Ir para página"
           onClick={(e) => {
-            if (typedInPage < 1 || typedInPage > totalPages) {
+            if (
+              parseInt(typedInPage) < 1 ||
+              parseInt(typedInPage) > totalPages
+            ) {
               e.preventDefault();
             }
           }}

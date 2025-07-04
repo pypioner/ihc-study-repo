@@ -110,12 +110,14 @@ export default function Pergunta({
         )}
         <div className={style.informacoes}>
           <div className={style.tags}>
-            <Link
-              href={`/perguntas?curso=${pergunta.curso.slug}`}
-              className="button secondary"
-            >
-              {pergunta.curso.nome}
-            </Link>
+            {!compact && (
+              <Link
+                href={`/perguntas?curso=${pergunta.curso.slug}`}
+                className="button secondary"
+              >
+                {pergunta.curso.nome}
+              </Link>
+            )}
             <Link
               href={`/perguntas?curso=${pergunta.curso.slug}&materia=${pergunta.materia.slug}`}
               className="button secondary"

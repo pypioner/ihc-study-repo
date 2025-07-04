@@ -3,6 +3,7 @@ import Header from "../../_components/Header";
 import Paginacao from "../../_components/Paginacao";
 import Pergunta from "../../_components/Pergunta";
 import style from "./perfil.module.css";
+import CursosPopup from "@/app/_components/CursosPopup";
 
 export default async function Perguntas({
   params,
@@ -44,9 +45,10 @@ export default async function Perguntas({
                   <b>{slug === "meu-nome" ? "5mil" : "17mil"}</b> pontos
                 </span>
               </h2>
-              <p>
-                Ciência da Computação, Análise e Desenvolvimento de Software
-              </p>
+              <span className={style.cursos}>
+                Ciência da Computação, Análise e Desenvolvimento de Software{" "}
+                {slug === "meu-nome" && <CursosPopup />}
+              </span>
             </div>
           </div>
           <div className={style.grid}>
