@@ -1,0 +1,204 @@
+.voltar {
+  color: var(--destaque);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.875rem;
+
+  .autor {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    svg {
+      width: 1.375rem;
+      height: 1.375rem;
+      fill: var(--cinza);
+    }
+
+    a {
+      color: var(--destaque);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .karma {
+      font-weight: bold;
+    }
+  }
+}
+
+.card {
+  border: 1px solid var(--cinza);
+  padding: 0.5rem;
+  margin-top: 1rem;
+
+  .tituloContainer {
+    display: flex;
+    justify-content: space-between;
+
+    h2 {
+      padding: 0.5rem;
+
+      .resolvida {
+        position: relative;
+        width: 102px;
+        display: inline-block;
+
+        div {
+          position: absolute;
+          bottom: -5px;
+          display: inline-flex;
+          align-items: center;
+          font-size: 0.875rem;
+          background-color: var(--verde);
+          color: #ffffff;
+          margin-left: 0.5rem;
+          padding: 0rem 0.5rem 0rem 0.25rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .informacoes {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0.875rem;
+    padding: 0.5rem;
+    padding-top: 0;
+
+    .tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+
+      a {
+        padding: 0.25rem 0.5rem;
+      }
+    }
+  }
+}
+
+.descricao {
+  margin: 1.5rem 1rem 1.5rem 0;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+
+  .texto {
+    line-height: 1.5;
+    flex: 1;
+
+    p {
+      margin: 1rem 0;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.perguntas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.respostas {
+  h3 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .postar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0 2.5rem 0;
+
+    textarea {
+      width: 100%;
+      padding: 0.375rem 0.5rem;
+      border: 1px solid var(--cinza);
+      resize: vertical;
+      font-family: inherit;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .botoes {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: flex-end;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin: 1.5rem 1rem 1.5rem 0;
+
+    .resposta {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+
+      &[data-downvoted="true"] {
+        opacity: 0.35;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .resolvida {
+        margin: auto;
+        color: var(--verde);
+        display: block;
+        margin-top: 0.75rem;
+      }
+
+      .lado {
+        flex: 1;
+
+        .texto {
+          line-height: 1.5;
+
+          p,
+          pre {
+            margin: 1rem 0;
+
+            &:first-child {
+              margin-top: 0;
+            }
+          }
+
+          pre {
+            border: 1px solid var(--cinza);
+            padding: 0.25rem 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
