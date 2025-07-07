@@ -5,6 +5,9 @@ import Votos from "@/app/_components/Votos";
 import Favoritar from "@/app/_components/Favoritar";
 import { relativeDate } from "@/app/_lib/relativeDate";
 import Pergunta from "@/app/_components/Pergunta";
+import Reportar from "@/app/_components/Reportar";
+import Editar from "@/app/_components/Editar";
+import Excluir from "@/app/_components/Excluir";
 
 export default async function PerguntaPage() {
   return (
@@ -51,28 +54,14 @@ export default async function PerguntaPage() {
                   Programação
                 </Link>
               </div>
-              <div className={style.meta}>
-                <div className={style.autor}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="currentColor"
-                  >
-                    <path d="M247.85-260.62q51-36.69 108.23-58.03Q413.31-340 480-340t123.92 21.35q57.23 21.34 108.23 58.03 39.62-41 63.73-96.84Q800-413.31 800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 66.69 24.12 122.54 24.11 55.84 63.73 96.84ZM480-460q-50.54 0-85.27-34.73T360-580q0-50.54 34.73-85.27T480-700q50.54 0 85.27 34.73T600-580q0 50.54-34.73 85.27T480-460Zm0 340q-75.31 0-141-28.04t-114.31-76.65Q176.08-273.31 148.04-339 120-404.69 120-480t28.04-141q28.04-65.69 76.65-114.31 48.62-48.61 114.31-76.65Q404.69-840 480-840t141 28.04q65.69 28.04 114.31 76.65 48.61 48.62 76.65 114.31Q840-555.31 840-480t-28.04 141q-28.04 65.69-76.65 114.31-48.62 48.61-114.31 76.65Q555.31-120 480-120Z" />
-                  </svg>
-                  <Link href="/perfil/joao-silva">João Silva</Link>
-                  <strong className={style.karma}>17mil</strong>
-                </div>
-                <span>
-                  {relativeDate(
-                    new Date(
-                      Date.now() - Math.floor(Math.random() * 1000000000)
-                    )
-                  )}
-                  , 2 respostas
-                </span>
+              <div className={style.acoes}>
+                <Excluir isPergunta />
+                <Editar
+                  isPergunta
+                  texto={
+                    "Estou tentando entender como funcionam os loops em JavaScript, alguém pode me ajudar? Tudo que encontro na internet é muito técnico e não consigo entender, gostaria de um exemplo simples que eu possa testar e ver o resultado.\n\nAlém disso, gostaria de saber se existem outros tipos de loops que eu deveria conhecer."
+                  }
+                />
               </div>
             </div>
           </div>
@@ -89,6 +78,29 @@ export default async function PerguntaPage() {
                 Além disso, gostaria de saber se existem outros tipos de loops
                 que eu deveria conhecer.
               </p>
+              <div className={style.meta}>
+                <div className={style.autor}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="currentColor"
+                  >
+                    <path d="M247.85-260.62q51-36.69 108.23-58.03Q413.31-340 480-340t123.92 21.35q57.23 21.34 108.23 58.03 39.62-41 63.73-96.84Q800-413.31 800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 66.69 24.12 122.54 24.11 55.84 63.73 96.84ZM480-460q-50.54 0-85.27-34.73T360-580q0-50.54 34.73-85.27T480-700q50.54 0 85.27 34.73T600-580q0 50.54-34.73 85.27T480-460Zm0 340q-75.31 0-141-28.04t-114.31-76.65Q176.08-273.31 148.04-339 120-404.69 120-480t28.04-141q28.04-65.69 76.65-114.31 48.62-48.61 114.31-76.65Q404.69-840 480-840t141 28.04q65.69 28.04 114.31 76.65 48.61 48.62 76.65 114.31Q840-555.31 840-480t-28.04 141q-28.04 65.69-76.65 114.31-48.62 48.61-114.31 76.65Q555.31-120 480-120Z" />
+                  </svg>
+                  <Link href="/perfil/meu-nome">Meu Nome</Link>
+                  <strong className={style.karma}>5mil</strong>
+                </div>
+                <span>
+                  {relativeDate(
+                    new Date(
+                      Date.now() - Math.floor(Math.random() * 1000000000)
+                    )
+                  )}
+                  , 2 respostas
+                </span>
+              </div>
             </div>
           </div>
           <div className={style.respostas}>
@@ -110,20 +122,25 @@ export default async function PerguntaPage() {
             </form>
             <ul>
               <li className={style.resposta}>
-                <div>
+                <div className={style.esquerda}>
                   <Votos count={Math.floor(Math.random() * 100)} />
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="32px"
-                    viewBox="0 -960 960 960"
-                    width="32px"
-                    fill="currentColor"
-                    className={style.resolvida}
+                  <button
+                    title="Essa resposta foi marcada como solução. Clique para desmarcar."
+                    className={style.solucao}
+                    data-resolvida="true"
                   >
-                    <path d="M400-304 240-464l56-56 104 104 264-264 56 56-320 320Z" />
-                  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="32px"
+                      viewBox="0 -960 960 960"
+                      width="32px"
+                      fill="currentColor"
+                    >
+                      <path d="M400-304 240-464l56-56 104 104 264-264 56 56-320 320Z" />
+                    </svg>
+                  </button>
                 </div>
-                <div className={style.lado}>
+                <div className={style.direita}>
                   <div className={style.texto}>
                     <p>
                       Você pode usar o loop `for` para iterar sobre arrays ou
@@ -156,20 +173,34 @@ export default async function PerguntaPage() {
                       <strong className={style.karma}>17mil</strong>
                     </div>
                     <span>
-                      {relativeDate(
-                        new Date(
-                          Date.now() - Math.floor(Math.random() * 1000000000)
-                        )
-                      )}
+                      <Reportar />
+                      <span>
+                        {relativeDate(
+                          new Date(
+                            Date.now() - Math.floor(Math.random() * 1000000000)
+                          )
+                        )}
+                      </span>
                     </span>
                   </div>
                 </div>
               </li>
               <li className={style.resposta} data-downvoted="true">
-                <div>
+                <div className={style.esquerda}>
                   <Votos count={-83} />
+                  <button className={style.solucao} title="Marcar como solução">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="32px"
+                      viewBox="0 -960 960 960"
+                      width="32px"
+                      fill="currentColor"
+                    >
+                      <path d="M400-304 240-464l56-56 104 104 264-264 56 56-320 320Z" />
+                    </svg>
+                  </button>
                 </div>
-                <div className={style.lado}>
+                <div className={style.direita}>
                   <div className={style.texto}>
                     <p>sla lol (lol)</p>
                   </div>
@@ -188,11 +219,15 @@ export default async function PerguntaPage() {
                       <strong className={style.karma}>5mil</strong>
                     </div>
                     <span>
-                      {relativeDate(
-                        new Date(
-                          Date.now() - Math.floor(Math.random() * 1000000000)
-                        )
-                      )}
+                      <Excluir isPergunta={false} />
+                      <Editar texto="sla lol (lol)" />
+                      <span>
+                        {relativeDate(
+                          new Date(
+                            Date.now() - Math.floor(Math.random() * 1000000000)
+                          )
+                        )}
+                      </span>
                     </span>
                   </div>
                 </div>

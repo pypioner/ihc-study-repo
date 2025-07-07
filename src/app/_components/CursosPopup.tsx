@@ -43,11 +43,11 @@ export default function CursosPopup() {
         </button>
       </span>
       <div
-        className={style.popupBackground}
+        className="popupBackground"
         data-open={open}
         onClick={() => setOpen(false)}
       >
-        <div className={style.popup} onClick={(e) => e.stopPropagation()}>
+        <div className="popup" onClick={(e) => e.stopPropagation()}>
           <h3>Selecione seus cursos e matérias</h3>
           <div className={style.selectContainer}>
             <select
@@ -151,7 +151,7 @@ export default function CursosPopup() {
               </ul>
             </div>
           </div>
-          <button className={style.closeButton} onClick={() => setOpen(false)}>
+          <button className="closeButton" onClick={() => setOpen(false)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
