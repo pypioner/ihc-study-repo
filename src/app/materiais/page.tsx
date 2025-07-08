@@ -1,20 +1,34 @@
+"use client"
+
 import Header from "../_components/Header";
 import style from "./materiais.module.css";
 import Paginacao from "../_components/Paginacao";
 import Material from "../_components/Material";
+import MaterialModal from "../_components/MaterialModal";
+import { useState } from "react";
 
-export default async function Materiais({
-  searchParams,
+
+export default function Materiais({
+  params,
 }: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  params: { [key: string]: string | string[] | undefined };
 }) {
-  const params = await searchParams;
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
+      <MaterialModal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        onSubmit={() => setShowModal(false)}
+      />
       <Header path="/materiais" />
       <div className="page_container">
         <main>
           <h2>Materiais</h2>
+          <button className="button" onClick={() => setShowModal(true)}>
+            Fazer upload de material
+          </button>
           <Paginacao
             key={`paginacao_t_${params.page}`}
             page={typeof params.page === "string" ? parseInt(params.page) : 1}
@@ -30,7 +44,7 @@ export default async function Materiais({
                   "Prova da disciplina de Compiladores do curso de Ciência da Computação da UCS. Traz questões sobre análise léxica e sintática, gramáticas, autômatos e outros temas que costumam cair na matéria. Boa pra revisar o conteúdo ou ter uma ideia do estilo das provas anteriores.",
                 filepath: "/provas/Segunda Prova de Compiladores 2018.pdf",
                 filename: "Segunda Prova de Compiladores 2018.pdf",
-                votos: Math.floor(Math.random() * 100),
+                visualizacoes: Math.floor(Math.random() * 100),
                 resolucao: Math.random() < 0.5,
                 curso: [
                   {

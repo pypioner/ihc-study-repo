@@ -14,7 +14,7 @@ export default function Material({
     slug: string;
     titulo: string;
     descricao: string;
-    votos: number;
+    visualizacoes: number;
     filepath: string;
     filename: string;
     resolucao: boolean;
