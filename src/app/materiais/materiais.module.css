@@ -5,3 +5,15 @@
   gap: 1rem;
   margin-top: 1rem;
 }
+
+
+.titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  a {
+    font-size: 0.875rem;
+  }
+}

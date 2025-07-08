@@ -25,10 +25,22 @@ export default function Materiais({
       <Header path="/materiais" />
       <div className="page_container">
         <main>
-          <h2>Materiais</h2>
-          <button className="button" onClick={() => setShowModal(true)}>
-            Fazer upload de material
-          </button>
+          <div className={style.titulo}>
+            <h2>Materiais</h2>
+            <button className="button" onClick={() => setShowModal(true)}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="22px"
+                viewBox="0 -960 960 960"
+                width="22px"
+                fill="currentColor"
+              >
+                <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+              </svg>
+              Novo material
+            </button>
+          </div>
+           
           <Paginacao
             key={`paginacao_t_${params.page}`}
             page={typeof params.page === "string" ? parseInt(params.page) : 1}
