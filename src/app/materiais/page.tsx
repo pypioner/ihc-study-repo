@@ -1,34 +1,34 @@
-"use client"
-
 import Header from "../_components/Header";
 import style from "./materiais.module.css";
 import Paginacao from "../_components/Paginacao";
 import Material from "../_components/Material";
-import MaterialModal from "../_components/MaterialModal";
-import { useState } from "react";
-
+import Link from "next/link";
 
 export default function Materiais({
   params,
 }: {
   params: { [key: string]: string | string[] | undefined };
 }) {
-  const [showModal, setShowModal] = useState(false);
-
   return (
     <>
-      <MaterialModal
-        open={showModal}
-        onClose={() => setShowModal(false)}
-        onSubmit={() => setShowModal(false)}
-      />
       <Header path="/materiais" />
       <div className="page_container">
         <main>
-          <h2>Materiais</h2>
-          <button className="button" onClick={() => setShowModal(true)}>
-            Fazer upload de material
-          </button>
+          <div className={style.titulo}>
+            <h2>Materiais</h2>
+            <Link className="button" href="/materiais/novo">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="22px"
+                viewBox="0 -960 960 960"
+                width="22px"
+                fill="currentColor"
+              >
+                <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+              </svg>
+              Novo material
+            </Link>
+          </div>
           <Paginacao
             key={`paginacao_t_${params.page}`}
             page={typeof params.page === "string" ? parseInt(params.page) : 1}

@@ -18,11 +18,7 @@ export default async function Perguntas({
         <main>
           <div className={style.titulo}>
             <h2>Perguntas e Respostas</h2>
-            <Link
-              href="/perguntas/novo"
-              className="button"
-              title="Criar nova pergunta"
-            >
+            <Link href="/perguntas/novo" className="button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="22px"
