@@ -14,6 +14,8 @@ export default function MaterialModal({
   onSubmit,
 }: MaterialModalProps) {
   const [loading, setLoading] = useState(false);
+  const [curso, setCurso] = useState("");
+  const [materia, setMateria] = useState("");
 
   if (!open) return null;
 
@@ -45,6 +47,44 @@ export default function MaterialModal({
             accept="application/pdf,image/png,image/jpeg,image/jpg"
             required
           />
+          <label htmlFor="resolucao">
+            <input type="checkbox" name="resolucao" defaultChecked={false} />
+            Possui resolução?
+          </label>
+
+          <div className="select">
+            <label htmlFor="curso">Curso</label>
+            <select
+              id="curso"
+              value={curso}
+              onChange={(e) => setCurso(e.target.value)}
+              required
+            >
+              <option value="">Selecione um curso</option>
+              <option value="ciencia-da-computacao">
+                Ciência da Computação
+              </option>
+              <option value="analise-e-desenvolvimento-de-sistemas">
+                Análise e Desenvolvimento de Sistemas
+              </option>
+            </select>
+          </div>
+
+          <div className="select">
+            <label htmlFor="materia">Matéria</label>
+            <select
+              id="materia"
+              value={materia}
+              onChange={(e) => setMateria(e.target.value)}
+              required
+            >
+              <option value="">Selecione uma matéria</option>
+              <option value="programacao">Programação</option>
+              <option value="banco-de-dados">Banco de Dados</option>
+              <option value="redes">Redes</option>
+            </select>
+          </div>
+
           <div className={styles.modal_actions}>
             <button type="submit" className="button" disabled={loading}>
               {loading ? "Enviando..." : "Enviar"}
