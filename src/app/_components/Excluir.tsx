@@ -44,9 +44,9 @@ export default function Excluir({
             Esta ação é irreversível. Você tem certeza de que deseja excluir
             esta {isPergunta ? "pergunta" : "resposta"}?
           </p>
-          <p>Para confirmar, digite sua senha:</p>
+          <p>Para confirmar, digite EXCLUIR:</p>
           <form>
-            <input type="password" required name="password" id="password" />
+            <input type="text" required name="deletar" pattern="EXCLUIR" />
             <button type="submit" className="button destructive">
               Excluir
             </button>

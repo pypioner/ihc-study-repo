@@ -58,6 +58,7 @@ export default async function PerguntaPage() {
                 <Excluir isPergunta />
                 <Editar
                   isPergunta
+                  titulo="Como fazer um loop em JavaScript?"
                   texto={
                     "Estou tentando entender como funcionam os loops em JavaScript, alguém pode me ajudar? Tudo que encontro na internet é muito técnico e não consigo entender, gostaria de um exemplo simples que eu possa testar e ver o resultado.\n\nAlém disso, gostaria de saber se existem outros tipos de loops que eu deveria conhecer."
                   }
