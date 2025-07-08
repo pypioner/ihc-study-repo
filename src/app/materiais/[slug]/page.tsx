@@ -115,7 +115,7 @@ export default async function MaterialPage() {
             <h3>2 Comentários</h3>
             <form action="" className={style.postar}>
               <textarea
-                placeholder="Escreva sua resposta..."
+                placeholder="Escreva seu comentário..."
                 rows={3}
                 required
               ></textarea>
