@@ -72,6 +72,17 @@ export default async function NovoMaterial() {
               required
             />
 
+            <label className={style.checkbox}>
+              Contém resolução?
+              <input
+                type="checkbox"
+                name="resolucao"
+                id="resolucao"
+                value="sim"
+                defaultChecked
+              />
+            </label>
+
             <Link href="/materiais/novo-material" className="button">
               Publicar Material
             </Link>

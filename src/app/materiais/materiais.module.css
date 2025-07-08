@@ -52,5 +52,11 @@
     margin-bottom: 0.5rem;
     margin-top: 1rem;
     font-weight: bold;
+
+    &.checkbox {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
   }
 }
