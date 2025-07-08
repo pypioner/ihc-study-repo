@@ -1,9 +1,10 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import style from "./material.module.css";
 import Favoritar from "./Favoritar";
 import { relativeDate } from "../_lib/relativeDate";
+import Votos from "./Votos";
 
 export default function Material({
   material,
@@ -14,7 +15,7 @@ export default function Material({
     slug: string;
     titulo: string;
     descricao: string;
-    visualizacoes: number;
+    votos: number;
     filepath: string;
     filename: string;
     resolucao: boolean;
@@ -39,17 +40,18 @@ export default function Material({
 }) {
   const baixarArquivo = () => {
     const fileUrl = material.filepath;
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = fileUrl;
-    a.download = '';
+    a.download = "";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-  }
+  };
 
   return (
     <li className={`${style.material} ${compact ? style.compact : ""}`}>
-      <button className={style.download} onClick={baixarArquivo}>      
+      <Votos count={material.votos} />
+      <button className={style.download} onClick={baixarArquivo}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24px"
@@ -93,8 +95,8 @@ export default function Material({
         {!compact && (
           <p className={style.descricao}>
             {material.descricao.length > 200
-              ?material.descricao.slice(0, 200).trim() + "..."
-              :material.descricao}
+              ? material.descricao.slice(0, 200).trim() + "..."
+              : material.descricao}
           </p>
         )}
         {!(compact && hideTags) && (
@@ -136,9 +138,7 @@ export default function Material({
                     {material.autor.karma}
                   </strong>
                 </div>
-                <div className={style.info}>
-                  {relativeDate(material.data)}
-                </div>
+                <div className={style.info}>{relativeDate(material.data)}</div>
               </div>
             )}
           </div>

@@ -3,9 +3,9 @@ import { useState } from "react";
 import style from "./reportar.module.css";
 
 export default function Excluir({
-  isPergunta = false,
+  type,
 }: {
-  isPergunta?: boolean;
+  type: "pergunta" | "resposta" | "comentario" | "material";
 }) {
   const [open, setOpen] = useState(false);
 
@@ -39,10 +39,10 @@ export default function Excluir({
               <path d="M256-227.69 227.69-256l224-224-224-224L256-732.31l224 224 224-224L732.31-704l-224 224 224 224L704-227.69l-224-224-224 224Z" />
             </svg>
           </button>
-          <h3>Excluir {isPergunta ? "pergunta" : "resposta"}?</h3>
+          <h3>Excluir {type}?</h3>
           <p>
-            Esta ação é irreversível. Você tem certeza de que deseja excluir
-            esta {isPergunta ? "pergunta" : "resposta"}?
+            Esta ação é irreversível. Você tem certeza de que deseja excluir est
+            {["comentario", "material"].includes(type) ? "e" : "a"} {type}?
           </p>
           <p>Para confirmar, digite EXCLUIR:</p>
           <form>

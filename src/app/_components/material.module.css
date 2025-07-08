@@ -89,6 +89,7 @@
           a {
             color: var(--destaque);
             text-decoration: none;
+            white-space: nowrap;
 
             &:hover {
               text-decoration: underline;
@@ -103,7 +104,7 @@
     }
   }
 
-.download {
+  .download {
     display: flex;
     flex-direction: column;
     background: none;
@@ -116,15 +117,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
-    
+
     &:hover {
-        text-decoration: underline;
-        color:  var(--destaque);
-        svg { 
-            fill: var(--destaque);
-        }
+      text-decoration: underline;
+      color: var(--destaque);
+      svg {
+        fill: var(--destaque);
+      }
     }
-}
+  }
 
   &.compact {
     .conteudo {

@@ -5,9 +5,9 @@ import style from "./editar.module.css";
 export default function Editar({
   titulo,
   texto,
-  isPergunta = false,
+  type,
 }: {
-  isPergunta?: boolean;
+  type: "pergunta" | "resposta" | "comentario" | "material";
   texto: string;
   titulo?: string;
 }) {
@@ -43,25 +43,52 @@ export default function Editar({
               <path d="M256-227.69 227.69-256l224-224-224-224L256-732.31l224 224 224-224L732.31-704l-224 224 224 224L704-227.69l-224-224-224 224Z" />
             </svg>
           </button>
-          <h3>Editando {isPergunta ? "pergunta" : "resposta"}</h3>
+          <h3>Editando {type}</h3>
           <form>
             {titulo && (
-              <input
-                type="text"
-                name="titulo"
-                placeholder="Título"
-                required
-                defaultValue={titulo}
-              />
+              <>
+                <label htmlFor="titulo">Título</label>
+                <input
+                  type="text"
+                  name="titulo"
+                  id="titulo"
+                  placeholder="Título"
+                  required
+                  defaultValue={titulo}
+                />
+              </>
             )}
+            <label htmlFor="descricao">Descrição</label>
             <textarea
               id="descricao"
               name="descricao"
-              placeholder="Descreva sua dúvida ou problema"
+              placeholder="Descrição"
               rows={10}
               required
               defaultValue={texto}
             ></textarea>
+            {type === "material" && (
+              <>
+                <label htmlFor="arquivo">Arquivo</label>
+                <input
+                  type="file"
+                  id="arquivo"
+                  name="arquivo"
+                  accept="application/pdf,image/png,image/jpeg,image/jpg"
+                  required
+                />
+                <label className={style.checkbox}>
+                  Com resolução?
+                  <input
+                    type="checkbox"
+                    name="resolucao"
+                    id="resolucao"
+                    value="sim"
+                    defaultChecked
+                  />
+                </label>
+              </>
+            )}
             <button type="submit" className="button">
               Salvar alterações
             </button>

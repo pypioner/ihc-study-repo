@@ -55,9 +55,9 @@ export default async function PerguntaPage() {
                 </Link>
               </div>
               <div className={style.acoes}>
-                <Excluir isPergunta />
+                <Excluir type="pergunta" />
                 <Editar
-                  isPergunta
+                  type="pergunta"
                   titulo="Como fazer um loop em JavaScript?"
                   texto={
                     "Estou tentando entender como funcionam os loops em JavaScript, alguém pode me ajudar? Tudo que encontro na internet é muito técnico e não consigo entender, gostaria de um exemplo simples que eu possa testar e ver o resultado.\n\nAlém disso, gostaria de saber se existem outros tipos de loops que eu deveria conhecer."
@@ -174,7 +174,7 @@ export default async function PerguntaPage() {
                       <strong className={style.karma}>17mil</strong>
                     </div>
                     <span>
-                      <Reportar />
+                      <Reportar type="resposta" />
                       <span>
                         {relativeDate(
                           new Date(
@@ -220,8 +220,8 @@ export default async function PerguntaPage() {
                       <strong className={style.karma}>5mil</strong>
                     </div>
                     <span>
-                      <Excluir isPergunta={false} />
-                      <Editar texto="sla lol (lol)" />
+                      <Excluir type="resposta" />
+                      <Editar type="resposta" texto="sla lol (lol)" />
                       <span>
                         {relativeDate(
                           new Date(

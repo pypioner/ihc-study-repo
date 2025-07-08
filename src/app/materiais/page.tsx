@@ -4,11 +4,13 @@ import Paginacao from "../_components/Paginacao";
 import Material from "../_components/Material";
 import Link from "next/link";
 
-export default function Materiais({
-  params,
+export default async function Materiais({
+  searchParams,
 }: {
-  params: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
+  const params = await searchParams;
+
   return (
     <>
       <Header path="/materiais" />
@@ -44,7 +46,7 @@ export default function Materiais({
                   "Prova da disciplina de Compiladores do curso de Ciência da Computação da UCS. Traz questões sobre análise léxica e sintática, gramáticas, autômatos e outros temas que costumam cair na matéria. Boa pra revisar o conteúdo ou ter uma ideia do estilo das provas anteriores.",
                 filepath: "/provas/Segunda Prova de Compiladores 2018.pdf",
                 filename: "Segunda Prova de Compiladores 2018.pdf",
-                visualizacoes: Math.floor(Math.random() * 100),
+                votos: Math.floor(Math.random() * 100),
                 resolucao: Math.random() < 0.5,
                 curso: [
                   {
@@ -87,12 +89,12 @@ export default function Materiais({
                 ),
                 favoritada: Math.random() < 0.5,
               }))
-              .filter((material, i) => {
+              .filter((material) => {
                 let include = false;
-                if (params.resolvidas === params["sem-resolucao"]) {
+                if (params["com-resolucao"] === params["sem-resolucao"]) {
                   include = true;
                 } else {
-                  if (params.resolvidas && material.resolucao) {
+                  if (params["com-resolucao"] && material.resolucao) {
                     include = true;
                   }
                   if (params["sem-resolucao"] && !material.resolucao) {
@@ -124,6 +126,22 @@ export default function Materiais({
                   }
                 }
                 return include;
+              })
+              .sort((a, b) => {
+                if (params.ordenacao === "mais-votadas") {
+                  return b.votos - a.votos;
+                }
+                if (params.ordenacao === "menos-votadas") {
+                  return a.votos - b.votos;
+                }
+                if (params.ordenacao === "mais-novas") {
+                  return b.data.getTime() - a.data.getTime();
+                }
+                if (params.ordenacao === "mais-antigas") {
+                  return a.data.getTime() - b.data.getTime();
+                }
+                // Default = mais-votadas
+                return b.votos - a.votos;
               })
               .map((material, i) => (
                 <Material key={`material_${i}`} material={material} />
@@ -179,10 +197,10 @@ export default function Materiais({
               <select
                 name="ordenacao"
                 id="ordenacao"
-                defaultValue={params.ordenacao || "mais-visualizadas"}
+                defaultValue={params.ordenacao || "mais-votadas"}
               >
-                <option value="mais-visualizadas">Mais visualizadas</option>
-                <option value="menos-visualizadas">Menos visualizadas</option>
+                <option value="mais-votadas">Maior nota</option>
+                <option value="menos-votadas">Menor nota</option>
                 <option value="mais-novas">Mais novas</option>
                 <option value="mais-antigas">Mais antigas</option>
               </select>
@@ -195,12 +213,12 @@ export default function Materiais({
                     type="checkbox"
                     name="com-resolucao"
                     defaultChecked={
-                      !params.resolvidas &&
+                      !params["com-resolucao"] &&
                       !params["sem-resolucao"] &&
                       !params.favoritos &&
                       !params.minhas
                         ? true
-                        : params.resolvidas !== undefined
+                        : params["com-resolucao"] !== undefined
                     }
                   />
                   Com resolução
@@ -210,7 +228,7 @@ export default function Materiais({
                     type="checkbox"
                     name="sem-resolucao"
                     defaultChecked={
-                      !params.resolvidas &&
+                      !params["com-resolucao"] &&
                       !params["sem-resolucao"] &&
                       !params.favoritos &&
                       !params.minhas

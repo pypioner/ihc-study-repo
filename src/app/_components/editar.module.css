@@ -12,13 +12,22 @@
 .popup {
   font-size: 1rem;
 
-  textarea {
-    margin-top: 1rem;
-  }
-
   form button {
     display: block;
     margin-left: auto;
     margin-top: 0.5rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    font-weight: bold;
+
+    &.checkbox {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
   }
 }

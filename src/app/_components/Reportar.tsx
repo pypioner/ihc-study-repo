@@ -3,9 +3,9 @@ import { useState } from "react";
 import style from "./reportar.module.css";
 
 export default function Reportar({
-  isPergunta = false,
+  type,
 }: {
-  isPergunta?: boolean;
+  type: "pergunta" | "resposta" | "comentario" | "material";
 }) {
   const [open, setOpen] = useState(false);
   const [enviado, setEnviado] = useState(false);
@@ -41,7 +41,7 @@ export default function Reportar({
               <path d="M256-227.69 227.69-256l224-224-224-224L256-732.31l224 224 224-224L732.31-704l-224 224 224 224L704-227.69l-224-224-224 224Z" />
             </svg>
           </button>
-          <h3>Reportar {isPergunta ? "pergunta" : "resposta"}</h3>
+          <h3>Reportar {type}</h3>
           {enviado ? (
             <>
               <p>
@@ -55,8 +55,8 @@ export default function Reportar({
           ) : (
             <>
               <p>
-                Informe o motivo pelo qual você está reportando esta{" "}
-                {isPergunta ? "pergunta" : "resposta"}.
+                Informe o motivo pelo qual você está reportando est
+                {["material", "comentario"].includes(type) ? "e" : "a"} {type}.
               </p>
               <form
                 onSubmit={(e) => {

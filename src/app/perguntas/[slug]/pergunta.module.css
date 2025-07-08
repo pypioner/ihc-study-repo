@@ -64,6 +64,13 @@
   }
 }
 
+.file {
+  border: none;
+  width: 100%;
+  height: calc(100vh - 10rem);
+  flex: 1;
+}
+
 .card {
   border: 1px solid var(--cinza);
   padding: 0.5rem;

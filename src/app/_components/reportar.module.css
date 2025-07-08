@@ -12,10 +12,6 @@
 .popup {
   font-size: 1rem;
 
-  textarea {
-    margin-top: 1rem;
-  }
-
   form button {
     display: block;
     margin-left: auto;
