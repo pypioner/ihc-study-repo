@@ -3,11 +3,13 @@ import { useState } from "react";
 import style from "./editar.module.css";
 
 export default function Editar({
+  titulo,
   texto,
   isPergunta = false,
 }: {
   isPergunta?: boolean;
   texto: string;
+  titulo?: string;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -43,10 +45,19 @@ export default function Editar({
           </button>
           <h3>Editando {isPergunta ? "pergunta" : "resposta"}</h3>
           <form>
+            {titulo && (
+              <input
+                type="text"
+                name="titulo"
+                placeholder="Título"
+                required
+                defaultValue={titulo}
+              />
+            )}
             <textarea
-              id="motivo"
-              name="motivo"
-              placeholder="Descreva o motivo da sua denúncia..."
+              id="descricao"
+              name="descricao"
+              placeholder="Descreva sua dúvida ou problema"
               rows={10}
               required
               defaultValue={texto}

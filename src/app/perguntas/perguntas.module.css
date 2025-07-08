@@ -5,3 +5,52 @@
   gap: 1rem;
   margin-top: 1rem;
 }
+
+.titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  a {
+    font-size: 0.875rem;
+  }
+}
+
+.voltar {
+  color: var(--destaque);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  display: block;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.ladoALado {
+  display: flex;
+  gap: 1rem;
+
+  & > div {
+    flex: 1;
+  }
+}
+
+.form {
+  a {
+    margin-left: auto;
+    margin-top: 1rem;
+    display: block;
+    width: fit-content;
+    font-size: 0.875rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+}

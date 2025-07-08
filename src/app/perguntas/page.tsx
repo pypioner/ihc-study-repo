@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "../_components/Header";
 import Paginacao from "../_components/Paginacao";
 import Pergunta from "../_components/Pergunta";
@@ -15,7 +16,25 @@ export default async function Perguntas({
       <Header path="/perguntas" />
       <div className="page_container">
         <main>
-          <h2>Perguntas e Respostas</h2>
+          <div className={style.titulo}>
+            <h2>Perguntas e Respostas</h2>
+            <Link
+              href="/perguntas/novo"
+              className="button"
+              title="Criar nova pergunta"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="22px"
+                viewBox="0 -960 960 960"
+                width="22px"
+                fill="currentColor"
+              >
+                <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+              </svg>
+              Nova pergunta
+            </Link>
+          </div>
           <Paginacao
             key={`paginacao_t_${params.page}`}
             page={typeof params.page === "string" ? parseInt(params.page) : 1}
